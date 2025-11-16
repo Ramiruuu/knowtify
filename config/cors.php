@@ -19,7 +19,13 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    // Allow common local dev origins (Vite default 5173 and CRA/other 3000).
+    // Keep env option so production can still use FRONTEND_URL.
+    'allowed_origins' => [
+        env('FRONTEND_URL', 'http://localhost:3000'),
+        'http://localhost:5173',
+        'http://localhost:3000',
+    ],
 
     'allowed_origins_patterns' => [],
 
