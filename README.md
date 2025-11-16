@@ -1,3 +1,76 @@
+# Knowtify — Notes API
+
+A simple, modern and secure notes backend built with Laravel. Clean API, token-based auth (Sanctum), and tested endpoints — ready for a React/Vue frontend or mobile app.
+
+This repository contains a lean notes API focused on security and best practices. It is suitable for demonstration to employers and for continuing development into a full product.
+
+## Highlights
+- Simple, well-structured Laravel 12 application
+- Sanctum-based authentication for SPA and token flows
+- Form Requests for validation and Policies for authorization
+- API Resources to standardize JSON responses
+- Tests (Pest) covering authentication and notes CRUD
+- Ready to run locally with SQLite or MySQL (SQLyog)
+
+## Tech stack
+- PHP 8.2
+- Laravel 12
+- SQLite (default for development & tests) / MySQL (optional)
+- Laravel Sanctum for API authentication
+- Pest for tests
+- Vite + Tailwind (frontend assets scaffold)
+
+## API Endpoints (brief)
+All endpoints require authentication (Sanctum):
+
+- GET  /api/notes — list user's notes
+- POST /api/notes — create a note (title required)
+- PUT  /api/notes/{note} — update a note (owner only)
+- DELETE /api/notes/{note} — delete a note (owner only)
+
+Requests and responses are validated and shaped using Form Requests and API Resources. Unauthorized actions return 401/403 where appropriate.
+
+## Testing
+The project uses Pest. Tests run with an in-memory SQLite database by default.
+
+```powershell
+php artisan test
+```
+
+All tests should pass (feature and auth tests are included).
+
+## Project structure (short)
+- `app/Http/Controllers` — controllers and auth flows
+- `app/Models` — Eloquent models
+- `app/Policies` — authorization rules
+- `app/Http/Requests` — validation rules
+- `app/Http/Resources` — API response shapes
+- `database/migrations` — schema
+- `tests/Feature` — feature tests
+
+## Security & best practices followed
+- Policies and route-model binding to prevent ID guessing
+- Input validation via Form Requests
+- Throttling on API routes to reduce abuse
+- Secrets are excluded from git via `.gitignore` (`.env` is ignored)
+
+## How this helps your future employer
+- The code is organized and tested — shows you can build reliable backends
+- Uses current Laravel best practices (policies, resources, form requests)
+- Easy to extend: add features, frontend, CI, or cloud deployment
+
+## Next steps (optional enhancements)
+- Add CI (GitHub Actions) to run tests on push/PR
+- Add API documentation (OpenAPI / Swagger)
+- Add pagination and search for notes
+- Add Docker compose for consistent local dev
+
+## Contribution & contact
+If you want changes, open an issue or submit a pull request on GitHub.
+For direct contact: add your preferred email or LinkedIn in this section.
+
+---
+Thank you for checking out Knowtify — let me know if you want me to add CI, data migration helpers, or a polished frontend.
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -7,41 +80,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
@@ -50,9 +88,6 @@ Thank you for considering contributing to the Laravel framework! The contributio
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
